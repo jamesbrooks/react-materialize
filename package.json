@@ -15,7 +15,8 @@
     "build": "npm test && babel -d lib src",
     "lint": "eslint src test; exit 0",
     "fix": "eslint src test --fix",
-    "release": "npm run build && npm publish"
+    "release": "npm run build && npm publish",
+    "postinstall": "node -e \"require('fs').stat('lib', function (e, s) { process.exit(e || !s.isDirectory() ? 1 : 0) })\" || babel -d lib src"
   },
   "repository": {
     "type": "git",
